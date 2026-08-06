@@ -1,13 +1,15 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FUT18Launcher.Models;
-using FUT18Launcher.Repositories;
+using FUT18Launcher.Navigation;
+using FUT18Launcher.Services;
 
 namespace FUT18Launcher.ViewModels;
 
 public partial class CreateClubViewModel : BaseViewModel
 {
-    private readonly IClubRepository _clubRepository;
+    private readonly IClubService _clubService;
+    private readonly INavigationService _navigationService;
+    private readonly HomeViewModel _homeViewModel;
 
     [ObservableProperty]
     private string clubName = string.Empty;
@@ -18,9 +20,14 @@ public partial class CreateClubViewModel : BaseViewModel
     [ObservableProperty]
     private string statusMessage = string.Empty;
 
-    public CreateClubViewModel(IClubRepository clubRepository)
+    public CreateClubViewModel(
+        IClubService clubService,
+        INavigationService navigationService,
+        HomeViewModel homeViewModel)
     {
-        _clubRepository = clubRepository;
+        _clubService = clubService;
+        _navigationService = navigationService;
+        _homeViewModel = homeViewModel;
     }
 
     [RelayCommand]
@@ -40,25 +47,18 @@ public partial class CreateClubViewModel : BaseViewModel
             return;
         }
 
-        var existingClub = await _clubRepository.GetClubAsync();
-
-        if (existingClub != null)
+        if (await _clubService.ClubExistsAsync())
         {
             StatusMessage = "Ya existe un club creado.";
             return;
         }
 
-        var club = new Club
-        {
-            Name = ClubName.Trim(),
-            ManagerName = ManagerName.Trim(),
-            Coins = 500,
-            Level = 1,
-            Experience = 0
-        };
+        var club = await _clubService.CreateClubAsync(
+            ClubName,
+            ManagerName);
 
-        await _clubRepository.SaveClubAsync(club);
+        _homeViewModel.LoadClub(club);
 
-        StatusMessage = "¡Club creado correctamente!";
+        _navigationService.Navigate(_homeViewModel);
     }
 }
