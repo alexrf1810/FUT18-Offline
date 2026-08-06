@@ -14,7 +14,6 @@ public static class ApplicationHost
     public static IHost BuildHost()
     {
         return Host.CreateDefaultBuilder()
-
             .ConfigureServices((context, services) =>
             {
                 // Base de datos SQLite
@@ -30,14 +29,16 @@ public static class ApplicationHost
                 // Repositorios
                 services.AddScoped<IClubRepository, ClubRepository>();
 
+                // Servicios de dominio
+                services.AddScoped<IClubService, ClubService>();
+
                 // ViewModels
                 services.AddSingleton<MainViewModel>();
                 services.AddTransient<CreateClubViewModel>();
 
-                // Servicios de la aplicación
+                // Servicios auxiliares
                 services.AddApplicationServices();
             })
-
             .Build();
     }
 }
