@@ -17,6 +17,11 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Player>()
+    .HasOne(p => p.Club)
+    .WithMany(c => c.Players)
+    .HasForeignKey(p => p.ClubId)
+    .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Club>(entity =>
         {
