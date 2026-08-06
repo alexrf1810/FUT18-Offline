@@ -27,3 +27,6 @@
   </ItemGroup>
 
 </Project>
+Microsoft.Extensions.Hosting
+Microsoft.Extensions.DependencyInjection
+Microsoft.Extensions.Configuration.Json
