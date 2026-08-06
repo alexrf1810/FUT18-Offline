@@ -3,15 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:shellViews="clr-namespace:FUT18Launcher.Views.Shell"
         mc:Ignorable="d"
-        Title="FUT18 Offline"
+        Title="FUT 18 Offline"
         Height="900"
         Width="1600"
         WindowStartupLocation="CenterScreen"
-        Background="#101010">
+        ResizeMode="CanResize"
+        Background="#10141C">
 
     <Grid>
-        <ContentControl Content="{Binding CurrentViewModel}" />
+
+        <shellViews:ShellView/>
+
     </Grid>
 
 </Window>
