@@ -1,0 +1,15 @@
+<Window
+    x:Class="FUT18Launcher.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="FUT18 Offline"
+    Height="900"
+    Width="1600"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="CanResize">
+
+    <Grid Background="#101010">
+
+    </Grid>
+
+</Window>
