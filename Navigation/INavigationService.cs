@@ -1,7 +1,8 @@
+using FUT18Launcher.ViewModels;
+
 namespace FUT18Launcher.Navigation;
 
 public interface INavigationService
 {
-    void NavigateTo<TViewModel>()
-        where TViewModel : ViewModels.BaseViewModel, new();
+    void Navigate(BaseViewModel viewModel);
 }
