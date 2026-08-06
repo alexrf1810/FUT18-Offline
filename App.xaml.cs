@@ -1,6 +1,8 @@
-using System.Windows;
-using Microsoft.Extensions.Hosting;
 using FUT18Launcher.Core;
+using FUT18Launcher.Database;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Windows;
 
 namespace FUT18Launcher;
 
@@ -11,6 +13,12 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         Host = ApplicationHost.BuildHost();
+
+        using var scope = Host.Services.CreateScope();
+
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        db.Database.EnsureCreated();
 
         Host.Start();
 
