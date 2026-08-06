@@ -1,0 +1,11 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewModels="clr-namespace:FUT18Launcher.ViewModels"
+    xmlns:views="clr-namespace:FUT18Launcher.Views">
+
+    <DataTemplate DataType="{x:Type viewModels:CreateClubViewModel}">
+        <views:CreateClubView/>
+    </DataTemplate>
+
+</ResourceDictionary>
