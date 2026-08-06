@@ -3,6 +3,13 @@ using FUT18Launcher.Navigation;
 using FUT18Launcher.Repositories;
 using FUT18Launcher.Services;
 using FUT18Launcher.ViewModels;
+using FUT18Launcher.ViewModels.Club;
+using FUT18Launcher.ViewModels.Home;
+using FUT18Launcher.ViewModels.Market;
+using FUT18Launcher.ViewModels.SBC;
+using FUT18Launcher.ViewModels.Shell;
+using FUT18Launcher.ViewModels.Squad;
+using FUT18Launcher.ViewModels.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,7 +23,7 @@ public static class ApplicationHost
         return Host.CreateDefaultBuilder()
             .ConfigureServices((context, services) =>
             {
-                // Base de datos SQLite
+                // Base de datos
                 services.AddDbContext<AppDbContext>(options =>
                 {
                     options.UseSqlite("Data Source=fut18offline.db");
@@ -29,16 +36,22 @@ public static class ApplicationHost
                 // Repositorios
                 services.AddScoped<IClubRepository, ClubRepository>();
 
-                // Servicios de dominio
+                // Servicios
                 services.AddScoped<IClubService, ClubService>();
-
-                // Servicio de inicio
                 services.AddSingleton<StartupService>();
 
-                // ViewModels
+                // ViewModels principales
                 services.AddSingleton<MainViewModel>();
+                services.AddSingleton<ShellViewModel>();
+
+                // ViewModels
                 services.AddTransient<CreateClubViewModel>();
                 services.AddTransient<HomeViewModel>();
+                services.AddTransient<SquadViewModel>();
+                services.AddTransient<StoreViewModel>();
+                services.AddTransient<ClubViewModel>();
+                services.AddTransient<MarketViewModel>();
+                services.AddTransient<SbcViewModel>();
 
                 // Servicios auxiliares
                 services.AddApplicationServices();
