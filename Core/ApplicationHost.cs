@@ -22,10 +22,12 @@ public static class ApplicationHost
 
                 services.AddSingleton<MainViewModel>();
 
+                services.AddTransient<CreateClubViewModel>();
+
                 services.AddApplicationServices();
+
             })
 
             .Build();
     }
 }
-services.AddTransient<CreateClubViewModel>();
