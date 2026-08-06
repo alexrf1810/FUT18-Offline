@@ -32,6 +32,9 @@ public static class ApplicationHost
                 // Servicios de dominio
                 services.AddScoped<IClubService, ClubService>();
 
+                // Servicio de inicio
+                services.AddSingleton<StartupService>();
+
                 // ViewModels
                 services.AddSingleton<MainViewModel>();
                 services.AddTransient<CreateClubViewModel>();
