@@ -11,9 +11,8 @@ public class NavigationService : INavigationService
         _navigationStore = navigationStore;
     }
 
-    public void NavigateTo<TViewModel>()
-        where TViewModel : BaseViewModel, new()
+    public void Navigate(BaseViewModel viewModel)
     {
-        _navigationStore.CurrentViewModel = new TViewModel();
+        _navigationStore.CurrentViewModel = viewModel;
     }
 }
