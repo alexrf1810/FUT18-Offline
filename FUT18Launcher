@@ -1,0 +1,10 @@
+Core/
+Models/
+Services/
+Navigation/
+ViewModels/
+Views/
+Database/
+Resources/
+Themes/
+Utils/
