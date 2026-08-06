@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FUT18Launcher.Navigation;
 using FUT18Launcher.Services;
 using FUT18Launcher.ViewModels;
 
