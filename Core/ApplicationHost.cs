@@ -1,4 +1,6 @@
 using FUT18Launcher.Database;
+using FUT18Launcher.Navigation;
+using FUT18Launcher.Repositories;
 using FUT18Launcher.Services;
 using FUT18Launcher.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -15,25 +17,27 @@ public static class ApplicationHost
 
             .ConfigureServices((context, services) =>
             {
+                // Base de datos SQLite
                 services.AddDbContext<AppDbContext>(options =>
                 {
                     options.UseSqlite("Data Source=fut18offline.db");
                 });
 
-                services.AddSingleton<MainViewModel>();
+                // Navegación
+                services.AddSingleton<NavigationStore>();
+                services.AddSingleton<INavigationService, NavigationService>();
 
+                // Repositorios
+                services.AddScoped<IClubRepository, ClubRepository>();
+
+                // ViewModels
+                services.AddSingleton<MainViewModel>();
                 services.AddTransient<CreateClubViewModel>();
 
+                // Servicios de la aplicación
                 services.AddApplicationServices();
-
             })
 
             .Build();
     }
 }
-
-services.AddSingleton<NavigationStore>();
-
-services.AddSingleton<MainViewModel>();
-
-services.AddTransient<CreateClubViewModel>();
