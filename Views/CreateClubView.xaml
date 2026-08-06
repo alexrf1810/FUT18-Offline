@@ -6,40 +6,49 @@
 
         <Border Width="500"
                 Padding="30"
-                CornerRadius="10"
                 Background="#1B1B1B"
+                CornerRadius="12"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
 
             <StackPanel>
 
-                <TextBlock Text="Crear Club"
+                <TextBlock Text="FUT18 OFFLINE"
                            FontSize="30"
                            FontWeight="Bold"
                            Foreground="White"
                            HorizontalAlignment="Center"/>
 
                 <TextBlock Margin="0,30,0,5"
-                           Text="Nombre del Club"
-                           Foreground="White"/>
+                           Foreground="White"
+                           Text="Nombre del Club"/>
 
-                <TextBox Text="{Binding ClubName, UpdateSourceTrigger=PropertyChanged}"
-                         Height="32"/>
+                <TextBox Height="32"
+                         Text="{Binding ClubName, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <TextBlock Margin="0,20,0,5"
-                           Text="Nombre del Entrenador"
-                           Foreground="White"/>
+                           Foreground="White"
+                           Text="Nombre del Entrenador"/>
 
-                <TextBox Text="{Binding ManagerName, UpdateSourceTrigger=PropertyChanged}"
-                         Height="32"/>
+                <TextBox Height="32"
+                         Text="{Binding ManagerName, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Button Margin="0,30,0,0"
                         Height="40"
-                        Content="Crear Club"/>
+                        Content="Crear Club"
+                        Command="{Binding CreateClubCommand}"/>
+
+                <TextBlock Margin="0,20,0,0"
+                           HorizontalAlignment="Center"
+                           Foreground="LimeGreen"
+                           Text="{Binding StatusMessage}"/>
+
             </StackPanel>
 
         </Border>
 
     </Grid>
+
+</UserControl>
 
 </UserControl>
