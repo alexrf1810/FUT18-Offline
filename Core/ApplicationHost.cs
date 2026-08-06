@@ -31,3 +31,9 @@ public static class ApplicationHost
             .Build();
     }
 }
+
+services.AddSingleton<NavigationStore>();
+
+services.AddSingleton<MainViewModel>();
+
+services.AddTransient<CreateClubViewModel>();
