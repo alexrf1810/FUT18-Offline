@@ -28,3 +28,4 @@ public static class ApplicationHost
             .Build();
     }
 }
+services.AddTransient<CreateClubViewModel>();
