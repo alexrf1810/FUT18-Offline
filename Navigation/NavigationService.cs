@@ -1,9 +1,19 @@
+using FUT18Launcher.ViewModels;
+
 namespace FUT18Launcher.Navigation;
 
 public class NavigationService : INavigationService
 {
-    public void NavigateTo<TViewModel>()
+    private readonly NavigationStore _navigationStore;
+
+    public NavigationService(NavigationStore navigationStore)
     {
-        // Se implementará en el siguiente bloque.
+        _navigationStore = navigationStore;
+    }
+
+    public void NavigateTo<TViewModel>()
+        where TViewModel : BaseViewModel, new()
+    {
+        _navigationStore.CurrentViewModel = new TViewModel();
     }
 }
