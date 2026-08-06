@@ -4,9 +4,9 @@ namespace FUT18Launcher.Navigation;
 
 public class NavigationStore
 {
-    private BaseViewModel? _currentViewModel;
+    private BaseViewModel _currentViewModel = null!;
 
-    public BaseViewModel? CurrentViewModel
+    public BaseViewModel CurrentViewModel
     {
         get => _currentViewModel;
         set
