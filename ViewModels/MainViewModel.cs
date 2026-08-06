@@ -1,12 +1,13 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using FUT18Launcher.Navigation;
 
 namespace FUT18Launcher.ViewModels;
 
-public class MainViewModel : BaseViewModel
+public partial class MainViewModel : ObservableObject
 {
     private readonly NavigationStore _navigationStore;
 
-    public BaseViewModel? CurrentViewModel => _navigationStore.CurrentViewModel;
+    public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
 
     public MainViewModel(NavigationStore navigationStore)
     {
