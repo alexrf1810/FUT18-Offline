@@ -35,6 +35,7 @@ public static class ApplicationHost
                 // ViewModels
                 services.AddSingleton<MainViewModel>();
                 services.AddTransient<CreateClubViewModel>();
+                services.AddTransient<HomeViewModel>();
 
                 // Servicios auxiliares
                 services.AddApplicationServices();
