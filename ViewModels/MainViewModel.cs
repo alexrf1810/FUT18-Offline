@@ -1,12 +1,20 @@
+using FUT18Launcher.Navigation;
+
 namespace FUT18Launcher.ViewModels;
 
-public partial class MainViewModel : BaseViewModel
+public class MainViewModel : BaseViewModel
 {
-    private string _applicationTitle = "FUT18 Offline";
+    private readonly NavigationStore _navigationStore;
 
-    public string ApplicationTitle
+    public BaseViewModel? CurrentViewModel => _navigationStore.CurrentViewModel;
+
+    public MainViewModel(NavigationStore navigationStore)
     {
-        get => _applicationTitle;
-        set => SetProperty(ref _applicationTitle, value);
+        _navigationStore = navigationStore;
+
+        _navigationStore.CurrentViewModelChanged += () =>
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        };
     }
 }
