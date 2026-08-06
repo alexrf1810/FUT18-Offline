@@ -1,38 +1,31 @@
-using System.Windows;
-using FUT18Launcher.ViewModels;
+<Window x:Class="FUT18Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FUT18 Offline"
+        Height="900"
+        Width="1600"
+        WindowStartupLocation="CenterScreen"
+        Background="#101010">
 
-namespace FUT18Launcher;
+    <Grid Background="#101010">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
 
-public partial class MainWindow : Window
-{
-    public MainWindow()
-    {
-        InitializeComponent();
+            <TextBlock
+                Text="{Binding ApplicationTitle}"
+                FontSize="44"
+                FontWeight="Bold"
+                Foreground="White"
+                HorizontalAlignment="Center"/>
 
-        DataContext = new MainViewModel();
-    }
-}
+            <TextBlock
+                Margin="0,15,0,0"
+                Text="Version 0.2 - Bloque 1"
+                FontSize="16"
+                Foreground="#AAAAAA"
+                HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
 
-  <Grid Background="#101010">
-
-    <StackPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center">
-
-        <TextBlock
-            Text="{Binding ApplicationTitle}"
-            FontSize="44"
-            FontWeight="Bold"
-            Foreground="White"
-            HorizontalAlignment="Center"/>
-
-        <TextBlock
-            Margin="0,15,0,0"
-            Text="Version 0.2 - Bloque 1"
-            FontSize="16"
-            Foreground="#AAAAAA"
-            HorizontalAlignment="Center"/>
-
-    </StackPanel>
-
-</Grid>
+</Window>
