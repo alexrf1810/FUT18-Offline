@@ -17,19 +17,27 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Player>()
-    .HasOne(p => p.Club)
-    .WithMany(c => c.Players)
-    .HasForeignKey(p => p.ClubId)
-    .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Club>(entity =>
         {
             entity.HasKey(c => c.Id);
 
             entity.Property(c => c.Name)
-                  .IsRequired()
-                  .HasMaxLength(64);
+                .IsRequired()
+                .HasMaxLength(64);
+
+            entity.Property(c => c.ManagerName)
+                .IsRequired()
+                .HasMaxLength(64);
+
+            entity.Property(c => c.Coins)
+                .HasDefaultValue(500);
+
+            entity.Property(c => c.Level)
+                .HasDefaultValue(1);
+
+            entity.Property(c => c.Experience)
+                .HasDefaultValue(0);
         });
 
         modelBuilder.Entity<Player>(entity =>
@@ -37,8 +45,31 @@ public class AppDbContext : DbContext
             entity.HasKey(p => p.Id);
 
             entity.Property(p => p.Name)
-                  .IsRequired()
-                  .HasMaxLength(64);
+                .IsRequired()
+                .HasMaxLength(64);
+
+            entity.Property(p => p.Position)
+                .HasMaxLength(10);
+
+            entity.Property(p => p.Nation)
+                .HasMaxLength(64);
+
+            entity.Property(p => p.League)
+                .HasMaxLength(64);
+
+            entity.Property(p => p.ClubName)
+                .HasMaxLength(64);
+
+            entity.Property(p => p.Contract)
+                .HasDefaultValue(7);
+
+            entity.Property(p => p.Fitness)
+                .HasDefaultValue(99);
+
+            entity.HasOne(p => p.Club)
+                .WithMany(c => c.Players)
+                .HasForeignKey(p => p.ClubId)
+                .OnDelete(DeleteBehavior.Cascade);
         });
     }
 }
